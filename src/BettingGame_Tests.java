@@ -26,8 +26,7 @@ public class BettingGame_Tests {
 	public void winsNumberBetBalanceGoesUpByRangeMinus1TimesAmt(){
 		gen.setValue(19);
 		bet.betOnANumber(100, 10, 19, 19);
-		assertTrue(bet.getCurrentBalance()==900.00);
-
+		assertEquals(900,bet.getCurrentBalance(),0001);
 	}
 	
 	@Test
@@ -40,9 +39,9 @@ public class BettingGame_Tests {
 	
 	@Test
 	public void winsProbabilityBetBalanceIncreasesbyProperAmount(){
-		gen.setValue(15);
+		gen.setBoolean(true);
 		bet.betOnProbability(100,0.3);
-		assertEquals(bet.getCurrentBalance(),233);
+		assertEquals(233, bet.getCurrentBalance(), 0001);
 	}
 	@Test
 	public void losesProbabilityBetBalanceDecreasesbyBetAmount(){

@@ -15,15 +15,35 @@ public class Betting {
 		 return currentBalance;
 	}
 	
-	public void addMoney(int amnt){
-		throw new RuntimeException();
+	public void addMoney(double amnt){
+		if (amnt<0){
+			throw new IllegalArgumentException();
+		}
+		currentBalance+=amnt;
 	}
 	//returns true for a win, false for a loss
 	public boolean betOnANumber(int amnt, int min, int max, int selectedNumber) {
-		throw new RuntimeException();
+		int val=gen.getValue(min, max);
+		if (selectedNumber==val){
+			currentBalance+=(max-min)*amnt;
+			return true;
+		}
+		currentBalance-=amnt;
+		return false;
 	}
-			
+	//returns true for a win, false for a loss		
 	public boolean betOnProbability(int amnt, double p){ 
-		throw new RuntimeException();
+		if (p<0 || p>1){
+			throw new InvalidProbabilityException();
+		}
+		boolean winLoss=gen.getBoolean(p);
+		if (winLoss==true){
+			double increaseAmt= (Math.pow(p,-1)-1)*amnt;
+			currentBalance+=increaseAmt;
+			return true;
+		}
+		currentBalance-=amnt;
+		return false;
+	
 	}
 }
