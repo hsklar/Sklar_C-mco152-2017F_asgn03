@@ -15,7 +15,7 @@ public class UseBetting {
 		double prob=keyboard.nextDouble();
 		System.out.println("Enter the amount you want to bet");
 		int amnt=keyboard.nextInt();
-		boolean bet1=bet.betOnProbability(100, prob);
+		boolean bet1=bet.betOnProbability(amnt, prob);
 		System.out.println("You won bet1: "+bet1+ ". Your balance is currently " +bet.getCurrentBalance());
 		
 		System.out.println("Enter a number between 1 & 10 inclusive");

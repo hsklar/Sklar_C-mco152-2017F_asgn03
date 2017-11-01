@@ -19,8 +19,8 @@ public class RealGenerator implements IRandomValueGenerator{
 	//between 0 and the probability(p). This method allows that the likelihood of selecting a
 	//winning number (almost) exactly mirrors the probability of the event happening.
 	public boolean getBoolean(double p){
-		int val=getValue(1,100);
-		if (val>0 && val<(p+1)){
+		value=getValue(1,100);
+		if (value>0 && value<(p*100+1)){
 			return true;// a win-the event did happen
 		}
 	return false;// a loss-the event did not happen

@@ -23,6 +23,10 @@ public class Betting {
 	}
 	//returns true for a win, false for a loss
 	public boolean betOnANumber(int amnt, int min, int max, int selectedNumber) {
+		if (currentBalance-amnt<minBalance){
+			throw new InsufficientFundsException();
+		}
+
 		int val=gen.getValue(min, max);
 		if (selectedNumber==val){
 			currentBalance+=(max-min)*amnt;
@@ -35,6 +39,9 @@ public class Betting {
 	public boolean betOnProbability(int amnt, double p){ 
 		if (p<0 || p>1){
 			throw new InvalidProbabilityException();
+		}
+		if (currentBalance-amnt<minBalance){
+			throw new InsufficientFundsException();
 		}
 		boolean winLoss=gen.getBoolean(p);
 		if (winLoss==true){
